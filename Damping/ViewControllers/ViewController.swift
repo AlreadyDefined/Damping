@@ -10,11 +10,7 @@ class ViewController: NSViewController {
             do {
                 Shared.instance = try JSONDecoder().decode(Shared.self, from: payload!)
                 
-                let alert = NSAlert()
-                alert.messageText = "Файл загружен"
-                alert.alertStyle = .informational
-                alert.addButton(withTitle: "OK")
-                alert.runModal()
+                Helper.ShowAlert(messageText: "Файл загружен", alertStyle: .informational)
                 
                 T.objectValue = Shared.instance.T
                 K.objectValue = Shared.instance.K
@@ -27,12 +23,7 @@ class ViewController: NSViewController {
                 Position.objectValue = Double(Shared.instance.actuatorIndex) / Double(Shared.instance.M)
                 Accuracy.objectValue = Shared.instance.accuracy
             } catch {
-                let alert = NSAlert()
-                alert.messageText = "Ошибка чтения файла"
-                alert.informativeText = "Проверьте правильность его заполнения"
-                alert.alertStyle = .critical
-                alert.addButton(withTitle: "OK")
-                alert.runModal()
+                Helper.ShowAlert(messageText: "Ошибка чтения файла", alertStyle: .critical, informativeText: "Проверьте правильность его заполнения")
             }
         }
     }

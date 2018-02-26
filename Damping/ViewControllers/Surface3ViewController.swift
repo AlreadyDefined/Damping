@@ -62,6 +62,11 @@ class Surface3ViewController: ViewController, NChartSeriesDataSource, NChartValu
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if (Shared.instance.T == 0) {
+            Helper.ShowAlert(messageText: "Файл не загружен", alertStyle: .critical, informativeText: "Выберите файл с данными перед построением графика")
+            self.dismiss(-1)
+        }
+        
         surface.chart.licenseKey = "CL287yFxzDCHlM1LSfvg29TNm7YGQ6sDF2Pftfkz3FxKxnxxbDomWDybFFESGnV3cyXS+iqguUSx9vuExpgJpe13ZcIni1+A9ygM4rqNkvbNYlPEGHOYVwGmAHbDsLqmg1Sak4vv8Gao1Rq42tzlsi7W/ujMaJw8TNbbJrtXAU04LZvXRN1MHGAhD2qHq1SQ0YnDg0cC1Sl6WNKrLyiELneSdS1ibnUUy3ZKym7NpBKHz8vV+Zp44ZfKI9rWco7MLLcfokY3pDbXRyC/5szcjAMVAIH2ZrIxuAORivQ/jvrkM1V6d25yJfLIHxnrDok3qU1qLPXbfBoJ3RZU3veJ4KKOaW1lZwkMauWdli7mFb8nIGG+Eft75iI1M0xDFvIznjghXTQHF/+xRrqXO3HiSSDNF23qoc/aCMp1Cm7Tz7nqITLv+AAMdNvTF5jStkEQzVNlLuYqj0HdCmpCKMrVw+Hsps4tyxczFojmW+ocANxNLA+8yT5Ut2E5hQal72sQ9Hg7q3wrnxrACU6wsKnbpVBX1ylQZ3NGUaLOtVY/gImX4OF8wlVf1+PSzuNgF50oMu+P51kIjxTLlLPCz/2/4aPHpYDJRdxUUrQgVoOQWanPXZxSgmuamdZ0FpOSLbYHUfDSxR0Y5QuQ4k6VrQ8Q3w64B3il0EILkqB5476z2dk="
         
         updateData(surface)
